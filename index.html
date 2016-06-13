@@ -1,0 +1,363 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<style>
+   *{
+    	list-style: none;
+    	margin: 0;
+    	padding: 0;
+    }
+    .eee{
+        width: 1000px;
+        height:500px;
+        background: #9FD158;
+        margin:auto;
+        position: absolute;
+        top:0;
+        bottom:0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background:url(img/sss.jpg) no-repeat;
+    }
+    .e-e{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        z-index: 20;
+        top: 135px;
+        right: 85px;
+
+    }
+    .eee img{
+        width: 1000px;
+        height: 500px;
+    }
+    .death{
+        position: absolute;
+        top:0;
+        left: 0;
+        display: none;
+    }
+    .warp{
+        width: 1000px;
+        height: 500px;
+        padding-top:20px;
+        background: #9FD158;
+        margin:auto;
+        position: absolute;
+        top:0;
+        bottom:0;
+        left: 0;
+        right: 0;
+    }
+    .aaa{
+        position: absolute;
+        left: 240px;
+        width: 600px;
+        height: 500px;
+    }
+    .aaa img{
+        width: 500px;
+        height: 500px;
+    }
+	#sense{
+		width: 500px;
+		height: 500px;
+		border: 1px solid#000;
+		position: absolute;
+		border-bottom:none ;
+		border-right:none;
+		top:50px;
+		left:50px;
+		background: #999999;
+        background: #9FD158;
+	}
+    .block{
+    	width: 19px;
+    	height: 19px;
+    	float: left;
+    	margin-bottom:1px;
+    	margin-right:1px;
+    	background: #fff;
+    }
+    .shiwu{
+        background: url(img/ddd.png) no-repeat;
+    }
+    .shiwu img{
+        width: 19px;
+        height: 19px;
+    }
+    .she{
+        background: url(img/000.jpg) no-repeat -4px 0;
+    }
+    .she img{
+        width: 19px;
+        height: 19px;
+    }
+    .box{
+    	width: 280px;
+    	height: 520px;
+        position: relative;
+        top:0;
+    }
+    .shang{
+        width: 225px;
+        height: 420px;
+        position: absolute;
+        top:80px;
+        left: 0;
+        background: url(img/004.jpg);
+    }
+    .guan{
+    	width: 200px;
+    	height: 20px;
+    	padding: 20px;
+    	margin: auto;
+    	font-size: 24px;
+    	color: #000;
+        font-weight: bold;
+    }
+    #input{
+    	margin-left:30px;
+    	margin-top:-10px;
+        height: 30px;
+        line-height: 30px;
+    }
+    .ul{
+    	display: inline-block;
+    	margin-bottom:10px;
+        margin-top: 20px;
+        }
+    .ul1{
+        margin-top: 20px;
+    }
+    li{
+      display: inline-block;
+      width: 150px;
+      height: 20px;
+      border-radius: 30%;
+      margin-top:10px;
+      margin-left:30px;
+      padding:5px 10px 5px 10px;
+      background:#9FD158;
+      border:1px solid #000;
+      color:#000;
+      text-align: center;
+    }
+    .ul1 li:nth-child(1){
+        width: 150px;
+        height: 20px;
+        cursor: pointer;
+    }
+    .active{
+    	background: #34A01A;
+    }
+    .active .she img{
+        width: 12px;
+        height: 12px;
+    }
+    .box-r{
+        width: 240px;
+        height:520px;
+        width: 240px;
+        height: 500px;
+        float: right;
+        position: absolute;
+        top:0;
+        right: 0;
+    }
+    .rt{
+        width: 240px;
+        height: 370px;
+        margin-top: 100px;
+    }
+    .rt img{
+        width: 240px;
+        height: 370px;
+        margin-top: -30px;
+        left:0;
+        transition:left .5s ease;
+    }
+    .rt img {
+        left:20px;
+    }
+</style>
+<body>
+    <div class="eee">
+        <div class="e-e"></div>
+        <img src="img/sss.jpg" alt="" class="sss">
+        <img src="img/death.jpg" alt="" class="death">
+    </div>
+
+    <div class="warp">
+        <div class="aaa">
+            <img src="img/aaa.png" alt="">
+            <div id="sense"></div>
+        </div>
+        <div class="box">
+            <div class="guan">选择关卡</div>
+            <input placeholder="请输入5-40的数字" id="input" type="text">
+            <div class="shang">
+                <ul class="ul">
+                    <li  data-row="15">15x15</li>
+                    <li  data-row="20" class="active">20x20</li>
+                    <li  data-row="30">30x30</li>
+                </ul>
+                <ul class="ul1">
+                    <li  class="kaishi">开始</li>
+                    <li  class="zanting">暂停</li>
+                    <li  class="restart">再来一局</li>
+                </ul>
+            </div>
+        </div>
+        <div class="box-r">
+            <div class="rt">
+                <img src="img/she.png" alt="">
+            </div>
+        </div>
+    </div>
+<script src="jquery-1.12.0.js"></script>
+<script>
+   $(function(){
+   	//////全局变量
+   	var hang = 20;
+    var she = [{x:0,y:0},{x:0,y:1},{x:0,y:2}];
+    var timerId;
+    var shiwu;
+    var fangxiang = 40;
+    var eee = $('.eee');
+    var e = $('.e-e');
+//////////////////公用函数
+   	var zb2id = function (x,y) {
+    return x+'-'+y;
+   	}
+/////////////////画食物
+    var fangshiwu = function(){
+    var _x = Math.floor(Math.random()*hang);
+    var _y = Math.floor(Math.random()*hang);
+    $('#'+zb2id(_x,_y)).addClass('shiwu');
+    return {x:_x,y:_y}
+    }
+///////////////////画场景
+   	var huachangjing = function(){
+   		hang = hang||20;
+    var sense = $('#sense')
+        .empty(),
+        wh = Math.floor(400/hang);
+        for(var i = 0; i < hang; i++){
+    	    for(var j = 0; j < hang; j++){
+            $('<div>').addClass('block').attr('id',zb2id(i,j)).width(wh-1).height(wh-1).appendTo(sense);
+    	    }
+        }
+    sense.width(wh*hang).height(wh*hang);
+   	}
+    huachangjing();
+    shiwu=fangshiwu();
+//////////////////蛇运动的移动函数
+    var move=function(){
+    jiutou=she[she.length-1];
+    var xintou;
+    if( fangxiang === 37 ){
+    	xintou = {x:jiutou.x,y:jiutou.y-1}
+    }else if( fangxiang === 38 ){
+    	xintou = {x:jiutou.x-1,y:jiutou.y}
+    }else if( fangxiang === 39 ){
+    	xintou = {x:jiutou.x,y:jiutou.y+1}
+    }else if( fangxiang === 40 ){
+    	xintou = {x:jiutou.x+1,y:jiutou.y}
+    }
+//////////////////判断蛇头是否撞到墙，撞到的话游戏结束
+    if(xintou.x<0||xintou.x>hang-1||xintou.y<0||xintou.y>hang-1){
+        console.log(1);
+    	alert('撞死啦')
+    	pauseGame();
+    	return;
+    }
+
+    $('#'+zb2id(xintou.x,xintou.y)).addClass('she');
+    she.push(xintou);
+    if(xintou.x===shiwu.x&&xintou.y===shiwu.y){
+    	$('.shiwu').removeClass('shiwu')
+        shiwu=fangshiwu()
+    }else{
+    	 var weiba=she.shift();
+    	 $('#'+zb2id(weiba.x,weiba.y)).removeClass('she');
+    }
+    }
+    startGame();
+ ///////////选择难以程度15*15，20*20，30*30
+    $('.ul [data-row]').bind('click',function(){
+    	$('.active').removeClass('active')
+    	$(this).addClass('active');
+    	hang=$('li.active').attr('data-row')
+    	huachangjing();
+    	huashe();
+    	shiwu=fangshiwu()
+    })
+//////////////////点击开始开始游戏
+    $('.kaishi').bind('click',function(){
+    	startGame();
+        timerId=setInterval(move,200);
+    })
+/////////////////点击暂停，停止游戏
+    $('.zanting').bind('click',function(){
+    	pauseGame();
+    })
+/////////////////点击重新开始，开始游戏
+    $('.restart').bind('click',function(){
+    	 hang=20;
+    	 $('.she').removeClass('she');
+         she=[{x:0,y:0},{x:0,y:1},{x:0,y:2}];
+         $('.shiwu').removeClass('shiwu');
+         huashe();
+         shiwu=fangshiwu();
+         startGame();
+         timerId=setInterval(move,200);
+    })
+
+    $(document).bind('keydown',function(e){
+     fangxiang=e.keyCode;
+    })
+//////////////////点击空格可以暂停游戏
+    $('#input').bind('keydown',function(e){
+    if(e.keyCode===13){
+        hang=$(this).val();
+        console.log(typeof(hang))
+        if(isNaN(Number(hang))){
+        	alert(1);
+        	return;
+        }else{
+    	$('ul li[data-row]').removeClass('active')
+        $('ul li[data-row='+hang+']').addClass('active')
+    	huachangjing();
+    	huashe();
+    	fangshiwu();
+    	}
+    }
+    })
+
+////////////////画蛇
+    function huashe(){
+    	she.forEach(function(v){
+        $('#'+zb2id(v.x,v.y)).addClass('she');
+    	})
+    }
+    huashe();
+    function pauseGame(){
+        clearInterval(timerId);
+    }
+    function startGame(){
+        clearInterval(timerId);
+        // timerId=setInterval(move,200);
+    }
+    e.bind('click',function(){
+        eee.fadeOut({opacity:"0"},"slow");
+    })
+   })
+</script>
+</body>
+</html>
